@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block customcss %}
+{% endblock customcss %}
 
+{% block header %}
+<div class="alert alert-primary" role="alert">
+    <a href="{% url 'list' %}">社内SNS</a>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class='container'>
 {% if user.is_authenticated %}
 <form action='' method='POST' enctype="multipart/form-data">{% csrf_token %}
     <p>タイトル：<input type='text' name='title'></p>
@@ -14,4 +23,5 @@
 {% else %}
 ログインしてください
 {% endif %}
+</div>
 {% endblock content %}
